@@ -1,16 +1,25 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using PruebaTecnica.Data;
 using PruebaTecnica.Models;
+using System.Diagnostics;
 
 namespace PruebaTecnica.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly ApplicationDbContext _context;
+
+        public HomeController(ApplicationDbContext context)
         {
-            return View();
+            _context = context;
         }
 
+        public IActionResult Index()
+        {
+            var users = _context.Users.ToList();
+            return View(users);
+        }
         public IActionResult Privacy()
         {
             return View();

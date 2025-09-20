@@ -16,9 +16,10 @@ namespace PruebaTecnica.Controllers
         }
 
         // GET: Users
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _context.Users.ToListAsync());
+            var users = new List<UsersModel>(); // Replace with actual data retrieval if needed
+            return View(users);
         }
 
         // GET: Users/Create
