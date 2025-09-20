@@ -11,6 +11,6 @@ namespace PruebaTecnica.Data
         {
         }
 
-        public DbSet<UsersModel> Usuarios { get; set; }
+        public DbSet<UsersModel> Users { get; set; }
     }
 }
