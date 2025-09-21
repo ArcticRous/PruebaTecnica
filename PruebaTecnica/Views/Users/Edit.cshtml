@@ -1,0 +1,49 @@
+@model PruebaTecnica.Models.UsersModel
+
+@{
+    ViewData["Title"] = "Editar Usuario";
+}
+
+<h2>Editar Usuario</h2>
+
+<form asp-action="Edit" asp-route-id="@Model.Id" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group mb-3">
+        <label asp-for="Password"></label>
+        <div class="input-group">
+            <input asp-for="Password" class="form-control" type="password" id="editPassword"
+                   value="@Model.Password" autocomplete="off" />
+            <button type="button" class="btn btn-outline-secondary toggle-password-input" data-target="editPassword" tabindex="-1">
+                <i class="bi bi-eye"></i>
+            </button>
+        </div>
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
+@section Scripts {
+<script>
+    document.querySelectorAll('.toggle-password-input').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const inputId = this.getAttribute('data-target');
+            const input = document.getElementById(inputId);
+            const icon = this.querySelector('i');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('bi-eye');
+                icon.classList.add('bi-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('bi-eye-slash');
+                icon.classList.add('bi-eye');
+            }
+        });
+    });
+</script>
+}
