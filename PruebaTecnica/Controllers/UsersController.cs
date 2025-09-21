@@ -15,17 +15,12 @@ namespace PruebaTecnica.Controllers
             _context = context;
         }
 
+
         // GET: Users
         public IActionResult Index()
         {
-            var users = new List<UsersModel>(); // Replace with actual data retrieval if needed
+            var users = _context.Users.ToList();
             return View(users);
-        }
-
-        // GET: Users/Create
-        public IActionResult Create()
-        {
-            return View();
         }
 
         // POST: Users/Create
@@ -39,7 +34,9 @@ namespace PruebaTecnica.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(user);
+            // Si hay error, recarga la lista de usuarios y muestra el formulario con errores
+            var users = _context.Users.ToList();
+            return View("Index", users);
         }
 
         // GET: Users/Edit/1
@@ -77,26 +74,16 @@ namespace PruebaTecnica.Controllers
             return View(user);
         }
 
-        // GET: Usuarios/Delete/1
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null) return NotFound();
-
-            var user = await _context.Users
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (user == null) return NotFound();
-
-            return View(user);
-        }
-
-        // POST: Usuarios/Delete/1
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             var user = await _context.Users.FindAsync(id);
-            _context.Users.Remove(user);
-            await _context.SaveChangesAsync();
+            if (user != null)
+            {
+                _context.Users.Remove(user);
+                await _context.SaveChangesAsync();
+            }
             return RedirectToAction(nameof(Index));
         }
 

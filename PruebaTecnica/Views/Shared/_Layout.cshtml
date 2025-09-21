@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -8,6 +8,30 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/PruebaTecnica.styles.css" asp-append-version="true" />
+    <style>
+        body {
+            background: #f8fafc;
+        }
+        main {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            padding: 2rem 2.5rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        footer {
+            font-size: 1rem;
+            background: #f1f3f6;
+            border-top: 2px solid #e3e3e3;
+            padding: 1.2rem 0;
+        }
+        .footer-note {
+            font-size: 0.95rem;
+            color: #555;
+            margin-top: 0.5rem;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -24,7 +48,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index">Usuarios</a>
                         </li>
                     </ul>
                 </div>
@@ -40,6 +64,7 @@
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2025 - PruebaTecnica - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+          
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

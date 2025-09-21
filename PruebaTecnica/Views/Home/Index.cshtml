@@ -1,48 +1,8 @@
-﻿@model IEnumerable<PruebaTecnica.Models.UsersModel>
-
 @{
-    ViewData["Title"] = "Usuarios";
+    ViewData["Title"] = "Inicio";
 }
 
-<h1>Usuarios</h1>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Email</th>
-            <th>Contraseña</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.Email</td>
-                <td>@item.Password</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
-
-<h2>Crear nuevo usuario</h2>
-@{
-    var newUser = new PruebaTecnica.Models.UsersModel();
-}
-<form asp-action="Create" method="post">
-    <div class="form-group">
-        <label asp-for="@newUser.Email"></label>
-        <input asp-for="@newUser.Email" class="form-control" />
-        <span asp-validation-for="@newUser.Email" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="@newUser.Password"></label>
-        <input asp-for="@newUser.Password" class="form-control" />
-        <span asp-validation-for="@newUser.Password" class="text-danger"></span>
-    </div>
-    <button type="submit" class="btn btn-primary">Crear</button>
-</form>
+<h1>Bienvenido a PruebaTecnica</h1>
+<p>
+    <a class="btn btn-primary" href="/Users">Ir a Usuarios</a>
+</p>
