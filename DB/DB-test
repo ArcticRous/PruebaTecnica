@@ -1,0 +1,19 @@
+-- Crear base de datos
+CREATE DATABASE PruebaTecnicaDB;
+GO
+
+USE PruebaTecnicaDB;
+GO
+
+-- Crear tabla de usuarios
+CREATE TABLE Users (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Email NVARCHAR(256) NOT NULL,
+    Password NVARCHAR(256) NOT NULL
+);
+GO
+
+-- Insertar datos de ejemplo
+INSERT INTO Usuarios (Email, Password) VALUES ('usuario1@ejemplo.com', 'Password123');
+INSERT INTO Usuarios (Email, Password) VALUES ('usuario2@ejemplo.com', 'Password456');
+GO
